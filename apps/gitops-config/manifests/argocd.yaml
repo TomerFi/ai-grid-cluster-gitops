@@ -18,6 +18,7 @@ spec:
   # `ai-grid-admins` Group without touching `policy.default`.
   rbac:
     policy: |
+      g, cluster-admins, role:admin
       g, ai-grid-admins, role:admin
   # Statusless declarative resources such as ACM PlacementBinding and MetalLB
   # address pools rely on Argo's sync state; scripts/check-gitops-health-checks.sh
