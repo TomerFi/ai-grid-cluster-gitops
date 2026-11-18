@@ -309,9 +309,7 @@ spec:
                       mirrors:
                         - quay.io/rhoai
                       {{ if not $hcp }}
-                      # AllowContactSource: fall back to registry.redhat.io for GA
-                      # images the quay.io/rhoai mirror does not carry.
-                      mirrorSourcePolicy: AllowContactSource
+                      mirrorSourcePolicy: NeverContactSource
                       {{ end }}
                     - source: registry.redhat.io/rhaii
                       mirrors:
