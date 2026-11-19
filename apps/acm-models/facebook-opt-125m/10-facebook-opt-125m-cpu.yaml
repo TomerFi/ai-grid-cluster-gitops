@@ -41,9 +41,10 @@ spec:
             mountPath: /kv-cache/kv/model-cache/models
             subPath: models
       - name: main
-        # The 3.6 preset pins a stage-build digest; override with the GA 3.5.0 image so it pulls
-        # from registry.redhat.io without stage credentials.
-        image: registry.redhat.io/rhaii/vllm-cpu-rhel9:3.5.0
+        # The 3.6 preset pins a stage-build digest that registry.redhat.io/rhaii mirrors to the
+        # stage registry, so it cannot pull without stage credentials. Override with the GA 3.5.0
+        # image, re-hosted publicly in quay.io/tomerfi.
+        image: quay.io/tomerfi/vllm-cpu-rhel9:3.5.0
         # opt-125m is a base model without a chat template, so vLLM refuses /v1/chat/completions
         # (HTTP 400). vLLM loads a bare template name from the chat templates it bundles; ChatML is
         # its own example. A name needs no shell quoting in the preset's launcher, which evals its
